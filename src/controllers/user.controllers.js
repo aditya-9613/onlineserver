@@ -7,6 +7,9 @@ const userRegister = asyncHandler(async (req,res) => {
     
     const {user} = req.body
 
+    console.log('API Hits');
+    
+
     if (!user) {
         throw new ApiError(400,'Required Fields')
     }
@@ -19,6 +22,26 @@ const userRegister = asyncHandler(async (req,res) => {
 
 })
 
+const getDetails = asyncHandler(async (req,res) => {
+
+    const data={
+        "name": "Alice",
+        "age": 25,
+        "city": "Wonderland"
+      }
+      
+      console.log(data)
+      
+
+    return res
+    .status(200)
+    .json(
+        new ApiResponse(200,data,"done")
+    )
+})
+
+
 export {
-    userRegister
+    userRegister,
+    getDetails
 }
